@@ -24,23 +24,17 @@ export class App extends React.Component<{}, AppState> {
   handleHideClock = (event: MouseEvent) => {
     event.preventDefault();
 
-    if (this.nameTimerId) {
-      clearInterval(this.nameTimerId);
-      this.nameTimerId = null;
-    }
-
     this.setState({ hasClock: false });
   };
 
   handleShowClock = () => {
-    this.setState({ hasClock: true, clockName: 'Clock-4900' }, () => {
-      this.startNameTimer();
-    });
+    this.setState({ hasClock: true, clockName: 'Clock-4900' });
   };
 
   startNameTimer = () => {
     if (this.nameTimerId) {
       clearInterval(this.nameTimerId);
+      this.nameTimerId = null;
     }
 
     this.nameTimerId = setInterval(() => {
